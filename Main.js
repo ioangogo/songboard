@@ -19,7 +19,7 @@ function genboard() {
                         songoutput += "<span class='item top " + classes + "'>" + json_obj.results.items[i].title + "</span><br>";
                     } else if (json_obj.results.items[i].plugin == "bibles") {
                         var classes = json_obj.results.items[i].selected ? "sellected" : "";
-                        bibleoutput += "<span class='item " + classes + "'>" + json_obj.results.items[i].title + "</span><br>";
+                        bibleoutput += "<span class='item " + classes + "'>" + json_obj.results.items[i].title.split(", ")[0] + "</span><br>";
                     }
 
                 }
