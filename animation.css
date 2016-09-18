@@ -1,0 +1,23 @@
+@-webkit-keyframes fade-in{
+    from{
+        opacity:1;
+    }
+    to{
+        opacity:0;
+    }
+}
+#songs{
+    display:inline;
+    position:relative;
+    top:0px;
+    -webkit-animation:fade-in 1s infinite;
+
+}
+#bibles{
+    opacity:0;
+    display:inline;
+    position:relative;
+    margin-left:-56px;
+    -webkit-animation:fade-in 1s infinite;
+    -webkit-animation-delay:10s;
+}

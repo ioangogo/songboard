@@ -1,0 +1,49 @@
+.sellected {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+}
+
+html, body {
+    color: white;
+    width: 100%;
+    background-color: black;
+    font-family: 'FreeUniversalRegular';
+    margin: 0;
+}
+*{padding: 0;
+margin: 0;}
+.items {
+    font-size: 5vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item {
+    width: 100%;
+}
+
+h1{text-align: center;
+font-size: 3vw;
+padding: 0;
+margin: 0;}
+
+#title {}
+
+#bibles {
+    visibility: hidden;
+    height: 0;
+}
+
+#board {
+    width: 100%;
+}
+
+#songs {
+    width: 100%;
+}
+
+#table {
+    width: 100%;
+}
