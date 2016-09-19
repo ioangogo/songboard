@@ -4,6 +4,14 @@
     font-weight: bold;
     width: 100%;
 }
+#clock{
+    font-size: 3vw;
+    color: yellow;
+    text-align: left;
+    position: fixed;
+    top:0%;
+    width:100%; }
+
 
 html, body {
     color: white;
@@ -31,11 +39,14 @@ margin: 0;}
 
 #title {}
 
-#bibles {
+.hidden {
     visibility: hidden;
     height: 0;
 }
-
+#bibles{
+position: fixed;
+bottom:0%;
+width:100%; }
 #board {
     width: 100%;
 }
