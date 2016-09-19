@@ -10,7 +10,7 @@ function genboard() {
 
 
             var json_obj = response; //parse JSON
-            if (json_obj != oldjson) {
+            if (JSON.stringify(json_obj) != oldjson) {
                 var songoutput = "<div id='songs'><h1 id='title'>Songs</h1><br><div class='items'>";
                 var bibleoutput = "<div id='bibles'><h1 id='title'>Readings</h1><br><div class='items'>";
                 for (var i in json_obj.results.items) {
@@ -27,7 +27,7 @@ function genboard() {
                 bibleoutput += "</div></div>";
                 output = songoutput + bibleoutput;
                 $("#board").html(output);
-                oldjson = json_obj;
+                oldjson = JSON.stringify(json_obj);
             }
         }
     })
