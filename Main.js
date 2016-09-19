@@ -24,6 +24,26 @@ SOFTWARE.
 var oldjson;
 var incbible = true;
 
+function isOdd(num) { return num % 2;}
+function tencheck(i){
+if (i < 10) {i = "0" + i};
+return i;
+}
+
+function uclock() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s =today.getSeconds();
+    h = tencheck(h);
+    m = tencheck(m);
+    var colon = ":"
+    if (isOdd(s) === 0) {colon = " "};
+    document.getElementById('clock').innerHTML =
+    h + colon + m;
+    var t = setTimeout(uclock, 500);
+}
+
 function genboard() {
     $.ajax({
         type: "POST",
@@ -57,3 +77,4 @@ function doPoll() {
     setTimeout(doPoll, 5000);
 }
 doPoll();
+uclock();
