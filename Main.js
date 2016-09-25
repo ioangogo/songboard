@@ -45,6 +45,7 @@ function uclock() {
 }
 
 function genboard() {
+    var bibleitems = 0; 
     $.ajax({
         type: "POST",
         url: "/api/service/list",
@@ -59,13 +60,17 @@ function genboard() {
                         songoutput += "<span class='item top " + classes + "'>" + json_obj.results.items[i].title + "</span><br>";
                     } else if (json_obj.results.items[i].plugin == "bibles" && incbible == true) {
                         var classes = json_obj.results.items[i].selected ? "sellected" : "";
-                        bibleoutput += "<span class='item " + classes + "'>" + json_obj.results.items[i].title.split(", ")[0] + "</span><br>";
+			bibleitems += 1;
+			var biblev = json_obj.results.items[i].title;
+                        bibleoutput += "<span class='item " + classes + "'>" + biblev.substring(0, biblev.lastIndexOf(",") + 1).slice(0,-1) + "</span><br>";
                     }
                 }
                 songoutput += "</div></div>";
                 bibleoutput += "</div></div>";
                 output = songoutput + bibleoutput;
                 $("#board").html(output);
+                if (bibleitems == 0)
+                {$("#bibles").addClass("hidden");}
                 oldjson = JSON.stringify(json_obj);
             }
         }
