@@ -2,7 +2,6 @@
     background-color: yellow;
     color: black;
     font-weight: bold;
-    width: 100%;
 }
 #clock{
     font-size: 3vw;
@@ -15,7 +14,7 @@
 
 html, body {
     color: white;
-    width: 100%;
+    
     background-color: black;
     font-family: 'FreeUniversalRegular';
     margin: 0;
@@ -29,7 +28,7 @@ margin: 0;}
 }
 
 .item {
-    width: 100%;
+
 }
 
 h1{text-align: center;
@@ -46,15 +45,29 @@ margin: 0;}
 #bibles{
 position: fixed;
 bottom:0%;
-width:100%; }
+width:100%;
+	overflow:hidden;
+	white-space:nowrap;
+	    text-overflow: ellipsis;
+
+}
 #board {
-    width: 100%;
+    text-overflow: ellipsis;
+    width: 100vw;
+	overflow:hidden;
+	white-space:nowrap;
 }
 
 #songs {
-    width: 100%;
+    text-overflow: ellipsis;
+    width: 100vw;
+	overflow:hidden;
+	white-space:nowrap;
 }
 
 #table {
-    width: 100%;
+    text-overflow: ellipsis;
+    width: 100vw;
+	overflow:hidden;
+	white-space:nowrap;
 }
