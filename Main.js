@@ -44,14 +44,8 @@ function uclock() {
     var t = setTimeout(uclock, 500);
 }
 
-function genboard() {
-    var bibleitems = 0; 
-    $.ajax({
-        type: "POST",
-        url: "/api/service/list",
-        success: function(response) {
-            var json_obj = response; //parse JSON
-            if (JSON.stringify(json_obj) != oldjson) {
+function docodestuff(json_obj){
+    if (JSON.stringify(json_obj) != oldjson) {
                 var songoutput = "<div id='songs'><h1 id='title'>Songs</h1><br><div class='items'>";
                 var bibleoutput = "<div id='bibles'><h1 id='title'>Readings</h1><br><div class='items'>";
                 for (var i in json_obj.results.items) {
@@ -60,22 +54,29 @@ function genboard() {
                         songoutput += "<span class='item top " + classes + "'>" + json_obj.results.items[i].title + "</span><br>";
                     } else if (json_obj.results.items[i].plugin == "bibles" && incbible == true) {
                         var classes = json_obj.results.items[i].selected ? "sellected" : "";
-			bibleitems += 1;
-			var biblev = json_obj.results.items[i].title;
-                        bibleoutput += "<span class='item " + classes + "'>" + biblev.substring(0, biblev.lastIndexOf(",") + 1).slice(0,-1) + "</span><br>";
+                        bibleoutput += "<span class='item " + classes + "'>" + json_obj.results.items[i].title.split(", ")[0] + "</span><br>";
                     }
                 }
                 songoutput += "</div></div>";
                 bibleoutput += "</div></div>";
                 output = songoutput + bibleoutput;
-                $("#board").html(output);
-                if (bibleitems == 0)
-                {$("#bibles").addClass("hidden");}
+                document.getElementById('board').innerHTML = output;
                 oldjson = JSON.stringify(json_obj);
             }
-        }
-    })
 }
+
+function genboard() {
+    var json_obj;
+	var r = new XMLHttpRequest();
+    r.open("POST", "/api/service/list", true);
+    r.onreadystatechange = function () {
+            if (r.readyState != 4 || r.status != 200) return;
+            docodestuff(JSON.parse(r.responseText)); //parse JSON
+            }
+        r.send();
+        
+    }
+
 
 function doPoll() {
     genboard(); // process results here
@@ -83,3 +84,5 @@ function doPoll() {
 }
 doPoll();
 uclock();
+
+
